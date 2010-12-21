@@ -39,6 +39,7 @@
     NSDictionary *settings;
     NSMutableDictionary *commandObjects;
     NSURL *invokedURL;
+    NSURL *appURL;
 }
 
 @property (nonatomic, retain) UIWindow *window;

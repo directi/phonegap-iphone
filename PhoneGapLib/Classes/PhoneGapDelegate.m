@@ -199,7 +199,6 @@ static NSString *gapVersion;
 	 * webView
 	 * This is where we define the inital instance of the browser (WebKit) and give it a starting url/file.
 	 */
-    NSURL *appURL        = [NSURL fileURLWithPath:[[self class] pathForResource:[[self class] startPage]]];
     NSURLRequest *appReq = [NSURLRequest requestWithURL:appURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20.0];
 	[webView loadRequest:appReq];
 
@@ -425,24 +424,6 @@ static NSString *gapVersion;
 		 return NO;
 	}
     
-    /*
-     * If a URL is being loaded that's a local file URL, just load it internally
-     */
-    else if ([url isFileURL])
-    {
-        //NSLog(@"File URL %@", [url description]);
-        return YES;
-    }
-    
-    /*
-     * We don't have a PhoneGap or local file request, load it in the main Safari browser.
-     */
-    else
-    {
-        //NSLog(@"Unknown URL %@", [url description]);
-        [[UIApplication sharedApplication] openURL:url];
-        return NO;
-	}
 	
 	return YES;
 }
